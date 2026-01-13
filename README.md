@@ -40,8 +40,10 @@ Command used:
 
 ## ESLint and Prettier
 
-```npm run lint
-npm run format```
+```
+npm run lint
+npm run format
+```
 
 
 ![ESLint and Prettier](screenshots/ESLint.png)
@@ -51,7 +53,7 @@ npm run format```
 git add app.js
 git commit -m "should fail"
 ```
-![Husky pre-commit](screenshots/huskyfail.png)
+![Husky pre-commit](screenshots/husky-fail.png)
 
 ## Build Artifact
 
@@ -61,9 +63,10 @@ tar -czf artifacts/build-<timestamp>.tgz app.js validate.sh validate.log config.
 
 ![Buid-Artifact](screenshots/build.png)
 
-##SHA256 checksum
+## SHA256 checksum
 
-```sha256sum artifacts/build-1768285983.tgz > artifacts/build-1768285983.sha256
+```
+sha256sum artifacts/build-1768285983.tgz > artifacts/build-1768285983.sha256
 ```
 
 ![SHA256](screenshots/sha.png)
@@ -71,9 +74,8 @@ tar -czf artifacts/build-<timestamp>.tgz app.js validate.sh validate.log config.
 
 ## Cron job
 
-```
-* * * * * /home/abhayrajput/Desktop/Tasks/week1/day5/run_timestamp.sh
-```
+//* * * * * /home/abhayrajput/Desktop/Tasks/week1/day5/run_timestamp.sh
+
 logs are written 
 
 ![Cron Job](screenshots/cat-cron.png)
