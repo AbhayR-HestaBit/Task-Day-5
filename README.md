@@ -71,7 +71,8 @@ tar -czf artifacts/build-<timestamp>.tgz app.js validate.sh validate.log config.
 
 ## Cron job
 
-```* * * * * /home/abhayrajput/Desktop/Tasks/week1/day5/run_timestamp.sh
+```
+* * * * * /home/abhayrajput/Desktop/Tasks/week1/day5/run_timestamp.sh
 ```
 logs are written 
 
