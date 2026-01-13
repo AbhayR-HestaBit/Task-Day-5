@@ -1,30 +1,13 @@
 #!/bin/sh
 
-LOG_FILE="validate.log"
-TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+LOG="validate.log"
+echo "$(date -Iseconds) validation started" >> "$LOG"
 
-log() {
-  echo "[$TIMESTAMP] $1" >> "$LOG_FILE"
-}
+[ -d src ] || { echo "src/ missing" >> "$LOG"; exit 1; }
 
-# Check src directory
-if [ ! -d "src" ]; then
-  log "ERROR: src/ directory missing"
-  exit 1
-fi
+[ -f config.json ] || { echo "config.json missing" >> "$LOG"; exit 1; }
 
-# Check config.json exists
-if [ ! -f "config.json" ]; then
-  log "ERROR: config.json missing"
-  exit 1
-fi
+node -e "JSON.parse(require('fs').readFileSync('config.json'))" \
+|| { echo "invalid config.json" >> "$LOG"; exit 1; }
 
-# Validate config.json
-node -e "JSON.parse(require('fs').readFileSync('config.json'))" 2>/dev/null
-if [ $? -ne 0 ]; then
-  log "ERROR: config.json is invalid JSON"
-  exit 1
-fi
-
-log "Validation passed"
-exit 0
+echo "$(date -Iseconds) validation passed" >> "$LOG"
