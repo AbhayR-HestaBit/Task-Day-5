@@ -15,4 +15,3 @@ if (require.main === module) {
 module.exports = {
   logStartup,
 };
-// break
